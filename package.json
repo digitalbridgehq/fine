@@ -1,0 +1,55 @@
+{
+    "name": "@digitalbridge/fine",
+    "description": "a fine linear algebra library",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "./dist/index.d.ts",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "build:docs": "typedoc --out docs/api src/index.ts",
+        "test": "jest",
+        "test:watch": "jest --watch --coverage=false"
+    },
+    "dependencies": {
+        "fp-ts": "^1.8.1",
+        "lodash": "^4.17.11"
+    },
+    "devDependencies": {
+        "@types/jest": "^23.3.2",
+        "@types/lodash": "^4.14.116",
+        "jest": "^23.6.0",
+        "prettier": "^1.14.2",
+        "ts-jest": "^23.1.4",
+        "tslint": "^5.11.0",
+        "typedoc": "^0.12.0",
+        "typescript": "2.7.1"
+    },
+    "jest": {
+        "verbose": true,
+        "transform": {
+            ".(ts|tsx)": "ts-jest"
+        },
+        "rootDir": "src",
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/coverage/",
+            "/tests/"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 40,
+                "functions": 50,
+                "lines": 60,
+                "statements": 60
+            }
+        },
+        "collectCoverage": true
+    }
+}

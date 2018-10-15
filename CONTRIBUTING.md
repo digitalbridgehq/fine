@@ -1,6 +1,6 @@
 # Contributing
 
-Outside contributors are welcome,  please feel free to [open an issue](), or to make a pull request to this repository!
+Outside contributors are welcome,  please feel free to [open an issue](https://github.com/digitalbridgehq/fine/issues/new), or to make a pull request to this repository!
 
 We welcome bug reports, suggestions and pull requests.
 

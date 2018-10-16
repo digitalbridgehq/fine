@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "await-promise": true,
+    "no-unused-expression": false,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "prefer-const": true,
+    "semicolon": [true, "always"],
+    "no-consecutive-blank-lines": [true, 1],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ]
+  }
+}

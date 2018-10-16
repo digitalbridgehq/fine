@@ -9,7 +9,8 @@
         "build": "tsc",
         "build:docs": "typedoc --out docs/api src/index.ts",
         "test": "jest",
-        "test:watch": "jest --watch --coverage=false"
+        "test:watch": "jest --watch --coverage=false",
+        "lint": "tslint --project ./tslint.json src/**/*.ts"
     },
     "dependencies": {
         "fp-ts": "^1.8.1",

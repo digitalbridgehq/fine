@@ -1,8 +1,7 @@
 import { zip } from 'lodash';
 
 import { Pair } from '../util/Pair';
-// TODO: swap to index
-import { IPosition2D } from './interface'
+import { IPosition2D } from './interface';
 import { Vector2D } from '../Vector/Vector2D';
 
 export class Position2D implements IPosition2D {
@@ -24,15 +23,15 @@ export class Position2D implements IPosition2D {
         return this._position;
     }
     public maximum(right: IPosition2D) {
-        const [x, y] = (zip(this.value(), right.value()) as Array<Pair<number>>).map(
-            ([l, r]) => Math.max(l, r)
-        );
+        const [x, y] = (zip(this.value(), right.value()) as Array<
+            Pair<number>
+        >).map(([l, r]) => Math.max(l, r));
         return new Position2D(x, y);
     }
     public minimum(right: IPosition2D) {
-        const [x, y] = (zip(this.value(), right.value()) as Array<Pair<number>>).map(
-            ([l, r]) => Math.min(l, r)
-        );
+        const [x, y] = (zip(this.value(), right.value()) as Array<
+            Pair<number>
+        >).map(([l, r]) => Math.min(l, r));
         return new Position2D(x, y);
     }
     public translate(vector: Vector2D) {

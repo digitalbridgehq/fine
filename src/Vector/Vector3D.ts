@@ -1,6 +1,6 @@
 import { Either } from 'fp-ts/lib/Either';
-import { IVector, Vector } from "./";
-import { Triple } from "../util/Triple";
+import { IVector, Vector } from './';
+import { Triple } from '../util/Triple';
 
 /**
  * a {@link Vector} with a dimensionality of 3
@@ -23,6 +23,8 @@ export class Vector3D implements IVector {
         return this._vec.scale(scalar);
     }
     public sum(right: Vector3D): Either<string, Vector3D> {
-        return this._vec.sum(right).map(vec => new Vector3D(vec.value() as Triple<number>));
+        return this._vec
+            .sum(right)
+            .map(vec => new Vector3D(vec.value() as Triple<number>));
     }
 }

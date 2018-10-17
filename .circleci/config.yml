@@ -60,13 +60,13 @@ workflows:
             - test:
                 filters:
                     tags:
-                        only: /.*/
+                        only: /\d+\.\d+\.\d+.*/
                     branches:
                         only: master
             - lint:
                 filters:
                     tags:
-                        only: /.*/
+                        only: /\d+\.\d+\.\d+.*/
                     branches:
                         only: master
             - publish:
@@ -75,6 +75,6 @@ workflows:
                     - lint
                 filters:
                     tags:
-                        only: /.*/
+                        only: /\d+\.\d+\.\d+.*/
                     branches:
                         only: master

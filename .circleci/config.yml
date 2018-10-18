@@ -1,4 +1,7 @@
 version: 2
+general:
+    branches:
+        ignore: /^(?!master).*$/
 jobs:
     lint:
         docker:
@@ -61,14 +64,10 @@ workflows:
                 filters:
                     tags:
                         only: /\d+\.\d+\.\d+.*/
-                    branches:
-                        ignore: /.*/
             - lint:
                 filters:
                     tags:
                         only: /\d+\.\d+\.\d+.*/
-                    branches:
-                        ignore: /.*/
             - publish:
                 requires:
                     - test
@@ -76,5 +75,3 @@ workflows:
                 filters:
                     tags:
                         only: /\d+\.\d+\.\d+.*/
-                    branches:
-                        ignore: /.*/

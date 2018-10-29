@@ -3,7 +3,7 @@ import { Either } from 'fp-ts/lib/Either';
 import { IPosition3D } from '../Position';
 import { AxisAlignedBoundingBox } from '../AxisAlignedBoundingBox';
 import { AffineTransform3D } from '../AffineTransform';
-import { CubeCorners } from '../Cube';
+import { CubeCorners, NamedCubeCorners } from '../Cube';
 
 export interface IOrientedBoundingBox {
     /**
@@ -18,6 +18,10 @@ export interface IOrientedBoundingBox {
      * the corners of the OrientedBoundedBox
      */
     corners(): Either<string, CubeCorners>;
+    /**
+     * the {@link NamedCubeCorners} of the OrientedBoundingBox
+     */
+    namedCorners(): Either<string, NamedCubeCorners>;
     /**
      * the internal AxisAlignedBoundingBox this OrientedBoundingBox is constructed with
      */

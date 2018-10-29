@@ -1,2 +1,2 @@
-import { CubeCorners } from './interface';
-export { CubeCorners };
+import { CubeCorners, NamedCubeCorners } from './interface';
+export { CubeCorners, NamedCubeCorners };

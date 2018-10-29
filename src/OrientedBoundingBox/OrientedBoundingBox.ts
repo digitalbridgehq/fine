@@ -4,7 +4,7 @@ import { IPosition3D } from '../Position';
 
 import { IOrientedBoundingBox } from './interface';
 import { Either } from 'fp-ts/lib/Either';
-import { CubeCorners } from '../Cube';
+import { CubeCorners, NamedCubeCorners } from '../Cube';
 
 export class OrientedBoundingBox implements IOrientedBoundingBox {
     private _aabb: AxisAlignedBoundingBox;
@@ -30,6 +30,18 @@ export class OrientedBoundingBox implements IOrientedBoundingBox {
     }
     public corners(): Either<string, CubeCorners> {
         return this._transform.cornersFromAxisAlignedBoundingBox(this._aabb);
+    }
+    public namedCorners(): Either<string, NamedCubeCorners> {
+        return this.corners().map(corners => ({
+            'left-top-rear': corners[0],
+            'right-top-rear': corners[1],
+            'left-bottom-rear': corners[2],
+            'right-bottom-rear': corners[3],
+            'left-top-front': corners[4],
+            'right-top-front': corners[5],
+            'left-bottom-front': corners[6],
+            'right-bottom-front': corners[7],
+        }));
     }
     public axisAlignedBoundingBox() {
         return this._transform.axisAlignedBoundingBox(this._aabb);

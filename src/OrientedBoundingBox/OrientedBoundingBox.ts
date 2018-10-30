@@ -3,7 +3,7 @@ import { AffineTransform3D } from '../AffineTransform';
 import { IPosition3D } from '../Position';
 
 import { IOrientedBoundingBox } from './interface';
-import { CubeCorners } from '../Cube';
+import { CubeCorners, NamedCubeCorners } from '../Cube';
 import { FineResult } from '../interface';
 
 export class OrientedBoundingBox implements IOrientedBoundingBox {
@@ -30,6 +30,18 @@ export class OrientedBoundingBox implements IOrientedBoundingBox {
     }
     public corners(): FineResult<string, CubeCorners> {
         return this._transform.cornersFromAxisAlignedBoundingBox(this._aabb);
+    }
+    public namedCorners(): FineResult<string, NamedCubeCorners> {
+        return this.corners().map(corners => ({
+            'left-top-rear': corners[0],
+            'right-top-rear': corners[1],
+            'left-bottom-rear': corners[2],
+            'right-bottom-rear': corners[3],
+            'left-top-front': corners[4],
+            'right-top-front': corners[5],
+            'left-bottom-front': corners[6],
+            'right-bottom-front': corners[7],
+        }));
     }
     public axisAlignedBoundingBox(): FineResult<string, AxisAlignedBoundingBox> {
         return this._transform.axisAlignedBoundingBox(this._aabb);

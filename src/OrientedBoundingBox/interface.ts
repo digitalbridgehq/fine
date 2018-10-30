@@ -1,7 +1,7 @@
 import { IPosition3D } from '../Position';
 import { AxisAlignedBoundingBox } from '../AxisAlignedBoundingBox';
 import { AffineTransform3D } from '../AffineTransform';
-import { CubeCorners } from '../Cube';
+import { CubeCorners, NamedCubeCorners } from '../Cube';
 import { FineResult } from '../interface';
 
 export interface IOrientedBoundingBox {
@@ -17,6 +17,10 @@ export interface IOrientedBoundingBox {
      * the corners of the OrientedBoundedBox
      */
     corners(): FineResult<string, CubeCorners>;
+    /**
+     * the {@link NamedCubeCorners} of the OrientedBoundingBox
+     */
+    namedCorners(): FineResult<string, NamedCubeCorners>;
     /**
      * the internal AxisAlignedBoundingBox this OrientedBoundingBox is constructed with
      */

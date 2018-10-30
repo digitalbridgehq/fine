@@ -26,7 +26,7 @@ import {
   Position2D
 } from './Position';
 import { IVector, Vector, Vector2D } from './Vector';
-import { CubeCorners } from './Cube';
+import { CubeCorners, NamedCubeCorners } from './Cube';
 import { FineResult } from './interface';
 
 export { FineResult };
@@ -56,5 +56,6 @@ export {
   Position2D,
   Vector,
   Vector2D,
-  CubeCorners
+  CubeCorners,
+  NamedCubeCorners
 };

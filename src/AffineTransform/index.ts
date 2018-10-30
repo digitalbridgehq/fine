@@ -6,7 +6,6 @@ import { IVector, Vector } from '../Vector';
 import { IPosition3D as IPos3D, Position3D, IPosition3D } from '../Position';
 import {
   AxisAlignedBoundingBox,
-  IAxisAlignedBoundingBox
 } from '../AxisAlignedBoundingBox';
 import { CubeCorners } from '../Cube';
 import { Pair } from '../util/Pair';

@@ -3,8 +3,8 @@ import { AffineTransform3D } from '../AffineTransform';
 import { IPosition3D } from '../Position';
 
 import { IOrientedBoundingBox } from './interface';
-import { Either } from 'fp-ts/lib/Either';
 import { CubeCorners } from '../Cube';
+import { FineResult } from '../interface';
 
 export class OrientedBoundingBox implements IOrientedBoundingBox {
     private _aabb: AxisAlignedBoundingBox;
@@ -28,7 +28,7 @@ export class OrientedBoundingBox implements IOrientedBoundingBox {
     public rawAxisAlignedBoundingBox() {
         return this._aabb;
     }
-    public corners(): Either<string, CubeCorners> {
+    public corners(): FineResult<string, CubeCorners> {
         return this._transform.cornersFromAxisAlignedBoundingBox(this._aabb);
     }
     public axisAlignedBoundingBox() {

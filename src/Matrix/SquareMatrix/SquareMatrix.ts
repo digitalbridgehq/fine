@@ -1,9 +1,10 @@
-import { Either, left, right } from 'fp-ts/lib/Either';
+import { left, right } from 'fp-ts/lib/Either';
 
 import { ISquareMatrix } from './interface';
 import { IMatrix } from '../interface';
 import { Matrix } from '../Matrix';
 import { IVector } from '../../Vector';
+import { FineResult } from '../../interface';
 
 /**
  * a Matrix which contains the same number of rows and columns.
@@ -49,13 +50,13 @@ export class SquareMatrix implements ISquareMatrix {
             this._matrix.scale(scalar).value(),
         );
     }
-    public row(index: number): Either<string, IVector> {
+    public row(index: number): FineResult<string, IVector> {
         return this._matrix.row(index);
     }
-    public column(index: number): Either<string, IVector> {
+    public column(index: number): FineResult<string, IVector> {
         return this._matrix.column(index);
     }
-    public multiply(right: IMatrix): Either<string, IMatrix> {
+    public multiply(right: IMatrix): FineResult<string, IMatrix> {
         return this._matrix.multiply(right);
     }
     public sum(right: IMatrix) {
@@ -66,7 +67,7 @@ export class SquareMatrix implements ISquareMatrix {
     public value() {
         return this._matrix.value();
     }
-    public transpose(): Either<string, SquareMatrix> {
+    public transpose(): FineResult<string, SquareMatrix> {
         return this._matrix
             .transpose()
             .map(matrix => new SquareMatrix(this.rows(), matrix.value()));
@@ -82,7 +83,7 @@ export class SquareMatrix implements ISquareMatrix {
      * for Matrices of different sizes, returns a Left of
      *      the string {@link SquareMatrix.ERR_NO_DETERMINANT_WRONG_SIZE}
      */
-    public determinant(): Either<string, number> {
+    public determinant(): FineResult<string, number> {
         if (this.rows() === 2) {
             const value = this._matrix.value();
             // prettier-ignore
@@ -115,7 +116,7 @@ export class SquareMatrix implements ISquareMatrix {
      *  for singular Matrices (those without an inverse),
      *      returns a Left of the string {@link SquareMatrix.ERR_CANNOT_INVERT_SINGULAR}
      */
-    public inverse(): Either<string, SquareMatrix> {
+    public inverse(): FineResult<string, SquareMatrix> {
         return (
             this.determinant()
                 // explainer comments for what might look like 'weird' Either stuff.

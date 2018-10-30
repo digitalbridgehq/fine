@@ -1,4 +1,4 @@
-import { Either } from 'fp-ts/lib/Either';
+import { FineResult } from '../interface';
 
 import { IPosition3D } from '../Position/interface';
 import { IAxisAlignedBoundingBox } from '../AxisAlignedBoundingBox/interface';
@@ -8,7 +8,7 @@ export interface IAffineTransform {
     /**
      * produce a new IAffineTransform3D which represents the inverse of this one
      */
-    inverse(): Either<string, IAffineTransform>;
+    inverse(): FineResult<string, IAffineTransform>;
     /**
      * transform the position provided.
      *  Possible Left values include:
@@ -16,7 +16,7 @@ export interface IAffineTransform {
      *   - Matrix.ERR_CANNOT_MULTIPLY_INCOMPATIBLE_DIMENSIONS
      *
      */
-    position(pos: IPosition3D): Either<string, IPosition3D>;
+    position(pos: IPosition3D): FineResult<string, IPosition3D>;
     /**
      * transform the AxisAlignedBoundingBox provided into a new AxisAlignedBoundingBox.
      *  Possible Left values include:
@@ -25,7 +25,7 @@ export interface IAffineTransform {
      */
     axisAlignedBoundingBox(
         aabb: IAxisAlignedBoundingBox,
-    ): Either<string, IAxisAlignedBoundingBox>;
+    ): FineResult<string, IAxisAlignedBoundingBox>;
 
     /**
      * given an axisAlignedBoundingBox, return the transformed corners.
@@ -35,5 +35,5 @@ export interface IAffineTransform {
      */
     cornersFromAxisAlignedBoundingBox(
         aabb: IAxisAlignedBoundingBox,
-    ): Either<string, CubeCorners>;
+    ): FineResult<string, CubeCorners>;
 }

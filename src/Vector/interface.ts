@@ -1,5 +1,5 @@
 import { IValue } from '../Value/interface';
-import { Either } from 'fp-ts/lib/Either';
+import { FineResult } from '../interface';
 
 export interface IVector extends IValue<Array<number>> {
     /**
@@ -12,5 +12,5 @@ export interface IVector extends IValue<Array<number>> {
      */
     dot(right: IVector): number;
     scale(scalar: number): IVector;
-    sum(right: IVector): Either<string, IVector>;
+    sum(right: IVector): FineResult<string, IVector>;
 }

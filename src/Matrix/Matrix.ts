@@ -1,4 +1,4 @@
-import { Either, left, right } from 'fp-ts/lib/Either';
+import { left, right } from 'fp-ts/lib/Either';
 
 import { IPosition3D } from '../Position/interface';
 import { IVector, Vector } from '../Vector';
@@ -6,6 +6,7 @@ import { ZeroArray } from '../util/ZeroArray';
 import { Range } from '../util/Range';
 
 import { IMatrix } from './';
+import { FineResult } from '../interface';
 
 /**
  * a general i-by-j Matrix of numbers
@@ -35,7 +36,7 @@ export class Matrix implements IMatrix {
         rows: number,
         columns: number,
         array: Array<number>,
-    ): Either<string, Matrix> {
+    ): FineResult<string, Matrix> {
         return Matrix.invalidConstructor(array, rows, columns)
             ? left(Matrix.ERR_CANNOT_CONSTRUCT_INVALID_LENGTH)
             : right(new Matrix(rows, columns, array));
@@ -86,7 +87,7 @@ export class Matrix implements IMatrix {
     /**
      * sum two Matrices.
      */
-    public sum(rightMatrix: IMatrix): Either<string, Matrix> {
+    public sum(rightMatrix: IMatrix): FineResult<string, Matrix> {
         if (!this.matchesDimensions(rightMatrix)) {
             return left(Matrix.ERR_CANNOT_ADD_DIMENSIONS_DIFFER);
         }
@@ -139,7 +140,7 @@ export class Matrix implements IMatrix {
             return left<string, Vector>(Matrix.ERR_INDEX_OUT_OF_BOUNDS);
         }
     }
-    public multiply(rightMatrix: IMatrix): Either<string, Matrix> {
+    public multiply(rightMatrix: IMatrix): FineResult<string, Matrix> {
         // matrix multiplication can only occur if the number of the left Matrix's rows
         //   are equal to the number of the right Matrix's columns
         return this.columns() !== rightMatrix.rows()

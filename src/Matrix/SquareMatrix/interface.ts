@@ -1,13 +1,13 @@
-import { Either } from 'fp-ts/lib/Either';
+import { FineResult } from '../../interface';
 import { IMatrix } from '../interface';
 
 export interface ISquareMatrix extends IMatrix {
     /**
      * the determinant of this SquareMatrix
      */
-    determinant(): Either<string, number>;
+    determinant(): FineResult<string, number>;
     /**
      * the inverse of this SquareMatrix
      */
-    inverse(): Either<string, ISquareMatrix>;
+    inverse(): FineResult<string, ISquareMatrix>;
 }

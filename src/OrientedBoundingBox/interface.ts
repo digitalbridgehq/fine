@@ -1,9 +1,8 @@
-import { Either } from 'fp-ts/lib/Either';
-
 import { IPosition3D } from '../Position';
 import { AxisAlignedBoundingBox } from '../AxisAlignedBoundingBox';
 import { AffineTransform3D } from '../AffineTransform';
 import { CubeCorners } from '../Cube';
+import { FineResult } from '../interface';
 
 export interface IOrientedBoundingBox {
     /**
@@ -17,7 +16,7 @@ export interface IOrientedBoundingBox {
     /**
      * the corners of the OrientedBoundedBox
      */
-    corners(): Either<string, CubeCorners>;
+    corners(): FineResult<string, CubeCorners>;
     /**
      * the internal AxisAlignedBoundingBox this OrientedBoundingBox is constructed with
      */
@@ -25,11 +24,11 @@ export interface IOrientedBoundingBox {
     /**
      * return the enclosing AxisAlignedBoundingBox of this OrientedBoundingBox
      */
-    axisAlignedBoundingBox(): Either<string, AxisAlignedBoundingBox>;
+    axisAlignedBoundingBox(): FineResult<string, AxisAlignedBoundingBox>;
     /**
      * union of two OrientedBoundingBoxes, produces a new OBB in the left OBBs space
      */
-    union(right: IOrientedBoundingBox): Either<string, IOrientedBoundingBox>;
+    union(right: IOrientedBoundingBox): FineResult<string, IOrientedBoundingBox>;
     /**
      * the affine transform in 3D space associated with this IOrientedBoundingBox
      */

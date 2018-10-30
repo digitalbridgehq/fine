@@ -59,7 +59,7 @@ export class SquareMatrix implements ISquareMatrix {
     public multiply(right: IMatrix): FineResult<string, IMatrix> {
         return this._matrix.multiply(right);
     }
-    public sum(right: IMatrix) {
+    public sum(right: IMatrix): FineResult<string, SquareMatrix> {
         return this._matrix
             .sum(right)
             .map(result => new SquareMatrix(this.rows(), result.value()));

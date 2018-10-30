@@ -31,10 +31,10 @@ export class OrientedBoundingBox implements IOrientedBoundingBox {
     public corners(): FineResult<string, CubeCorners> {
         return this._transform.cornersFromAxisAlignedBoundingBox(this._aabb);
     }
-    public axisAlignedBoundingBox() {
+    public axisAlignedBoundingBox(): FineResult<string, AxisAlignedBoundingBox> {
         return this._transform.axisAlignedBoundingBox(this._aabb);
     }
-    public union(right: IOrientedBoundingBox) {
+    public union(right: IOrientedBoundingBox): FineResult<string, OrientedBoundingBox> {
         return right
             .axisAlignedBoundingBox()
             .chain(rightAABB =>

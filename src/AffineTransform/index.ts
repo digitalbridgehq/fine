@@ -3,10 +3,8 @@ import { right, left } from 'fp-ts/lib/Either';
 import { IAffineTransform } from './interface';
 import { SquareMatrix3D, Matrix } from '../Matrix';
 import { IVector, Vector } from '../Vector';
-import { IPosition3D as IPos3D, Position3D, IPosition3D } from '../Position';
-import {
-  AxisAlignedBoundingBox,
-} from '../AxisAlignedBoundingBox';
+import { Position3D, IPosition3D } from '../Position';
+import { AxisAlignedBoundingBox } from '../AxisAlignedBoundingBox';
 import { CubeCorners } from '../Cube';
 import { Pair } from '../util/Pair';
 import { FineResult } from '../interface';
@@ -46,7 +44,7 @@ export class AffineTransform3D implements IAffineTransform {
         )
     );
   }
-  public position(pos: IPos3D): FineResult<string, IPosition3D> {
+  public position(pos: IPosition3D): FineResult<string, IPosition3D> {
     return this._transform
       .multiply(Matrix.columnFromPos3D(pos))
       .chain(multipliedMatrix =>
@@ -60,8 +58,8 @@ export class AffineTransform3D implements IAffineTransform {
   ): FineResult<string, CubeCorners> {
     return this.rawCornersFromAxisAlignedBoundingBox(aabb).reduce(
       (
-        result: FineResult<string, Array<IPos3D>>,
-        eitherPos: FineResult<string, IPos3D>
+        result: FineResult<string, Array<IPosition3D>>,
+        eitherPos: FineResult<string, IPosition3D>
       ) => eitherPos.map(pos => result.getOrElse([]).concat(pos)),
       left('')
     ) as FineResult<string, CubeCorners>;

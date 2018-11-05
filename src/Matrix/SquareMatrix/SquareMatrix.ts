@@ -130,7 +130,7 @@ export class SquareMatrix implements ISquareMatrix {
                             ? left(SquareMatrix.ERR_CANNOT_INVERT_SINGULAR)
                             : right(determinant),
                 )
-                // convert error state for no determinant when matrix too large to cannot invert, matrix too large
+                // convert error state for 'no determinant when matrix too large' to 'cannot invert, matrix too large'
                 .mapLeft(
                     errorMessage =>
                         errorMessage ===

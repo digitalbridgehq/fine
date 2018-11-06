@@ -69,11 +69,19 @@ workflows:
                         only: /\d+\.\d+\.\d+.*/
                     branches:
                         ignore: /.*/
-            - publish:
+            - prepublish:
                 type: approval
                 requires:
                     - test
                     - lint
+                filters:
+                    tags:
+                        only: /\d+\.\d+\.\d+.*/
+                    branches:
+                        ignore: /.*/
+            - publish:
+                requires:
+                    - prepublish
                 filters:
                     tags:
                         only: /\d+\.\d+\.\d+.*/

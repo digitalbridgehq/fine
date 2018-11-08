@@ -3,7 +3,7 @@ cache: yarn
 node_js:
     - "10"
 stages:
-    - name: deploy
+    - name: npm release
       if: branch = master AND tag IS present
 jobs:
   include:

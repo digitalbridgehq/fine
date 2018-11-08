@@ -1,0 +1,14 @@
+language: node_js
+cache: yarn
+node_js:
+    - "10"
+stages:
+    - name: deploy
+      if: branch = master AND tag IS present
+jobs:
+  include:
+      - stage: npm release
+        deploy:
+            provider: npm
+            email: $NPM_EMAIL
+            api_key: $NPM_API_KEY

@@ -11,5 +11,6 @@ deploy:
         branch: master
         tag: true
     provider: npm
+    skip_cleanup: true
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY

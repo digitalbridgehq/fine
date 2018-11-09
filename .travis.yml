@@ -1,15 +1,13 @@
 language: node_js
+
 cache: yarn
+
 node_js:
     - "10"
-stages:
-    - name: npm release
-      if: branch = master AND tag IS present
-jobs:
-  include:
-      - stage: test
-        script: yarn test
-      - stage: npm release
-        deploy:
-            provider: npm
-            api_key: $NPM_API_KEY
+
+deploy:
+    on:
+        branch: master
+        tag: true
+    provider: npm
+    api_key: $NPM_API_KEY

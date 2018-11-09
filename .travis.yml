@@ -7,6 +7,8 @@ stages:
       if: branch = master AND tag IS present
 jobs:
   include:
+      - stage: test
+        script: yarn test
       - stage: npm release
         deploy:
             provider: npm

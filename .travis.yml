@@ -5,6 +5,7 @@ cache: yarn
 node_js:
     - "10"
 
+before_deploy: yarn build
 deploy:
     on:
         branch: master

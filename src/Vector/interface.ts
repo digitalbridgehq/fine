@@ -13,4 +13,5 @@ export interface IVector extends IValue<Array<number>> {
     dot(right: IVector): number;
     scale(scalar: number): IVector;
     sum(right: IVector): FineResult<string, IVector>;
+    sub(right: IVector): FineResult<string, IVector>;
 }

@@ -22,7 +22,10 @@ export class Vector2D implements IVector {
         return new Vector2D(this._vec.scale(scalar).value());
     }
     public sum(right: Vector2D): Either.Either<string, Vector2D> {
-        return this._vec.sum(right).map(vec => new Vector2D(vec.value()));
+        return this._vec.sum(right).map((vec) => new Vector2D(vec.value()));
+    }
+    public sub(right: Vector2D): Either.Either<string, Vector2D> {
+        return this._vec.sub(right).map((vec) => new Vector2D(vec.value()));
     }
     public toString() {
         const [l, r] = this._vec.value();

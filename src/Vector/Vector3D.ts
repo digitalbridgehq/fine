@@ -25,6 +25,12 @@ export class Vector3D implements IVector {
     public sum(right: Vector3D): Either<string, Vector3D> {
         return this._vec
             .sum(right)
-            .map(vec => new Vector3D(vec.value() as Triple<number>));
+            .map((vec) => new Vector3D(vec.value() as Triple<number>));
+    }
+
+    public sub(right: Vector3D): Either<string, Vector3D> {
+        return this._vec
+            .sub(right)
+            .map((vec) => new Vector3D(vec.value() as Triple<number>));
     }
 }

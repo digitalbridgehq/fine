@@ -1,4 +1,5 @@
 .idea
+.stryker-tmp
 node_modules
 dist
 coverage

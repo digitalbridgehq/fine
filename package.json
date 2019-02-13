@@ -10,6 +10,7 @@
         "build:docs": "typedoc --out docs/api src/index.ts",
         "test": "jest",
         "test:watch": "jest --watch --coverage=false",
+        "test:mutation": "stryker run",
         "lint": "tslint --project ./tslint.json src/**/*.ts"
     },
     "dependencies": {

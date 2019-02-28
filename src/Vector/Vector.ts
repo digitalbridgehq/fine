@@ -46,6 +46,24 @@ export class Vector implements IVector {
             .map(([left, right]) => left * right)
             .reduce((a, b) => a + b, 0);
     }
+
+    public cross(right: IVector) {
+        if (this.dimensionality() !== 3 || right.dimensionality() !== 3) {
+            throw new Error(
+                'Cannot cross a vector with a dimension not equal to 3'
+            );
+        }
+
+        const a = this.value();
+        const b = right.value();
+
+        return new Vector(3, [
+            a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0]
+        ]);
+    }
+
     public scale(scalar: number): Vector {
         return new Vector(
             this._dimensionality,
@@ -85,5 +103,17 @@ export class Vector implements IVector {
                 )
             );
         }
+    }
+
+    public neg(): Vector {
+        return this.scale(-1);
+    }
+
+    public mag(): number {
+        return Math.sqrt(this.dot(this));
+    }
+
+    public normalise(): Vector {
+        return this.scale(1 / this.mag());
     }
 }

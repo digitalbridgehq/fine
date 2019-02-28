@@ -11,7 +11,11 @@ export interface IVector extends IValue<Array<number>> {
      *   Note: Both vectors must be of the same dimensionality for an accurate result
      */
     dot(right: IVector): number;
+    cross(right: IVector): IVector;
     scale(scalar: number): IVector;
     sum(right: IVector): FineResult<string, IVector>;
     sub(right: IVector): FineResult<string, IVector>;
+    neg(): IVector;
+    normalise(): IVector;
+    mag(): number;
 }

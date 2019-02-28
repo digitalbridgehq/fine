@@ -27,6 +27,23 @@ export class Vector2D implements IVector {
     public sub(right: Vector2D): Either.Either<string, Vector2D> {
         return this._vec.sub(right).map((vec) => new Vector2D(vec.value()));
     }
+    public normalise() {
+        return this._vec.normalise();
+    }
+
+    public cross(right: IVector): IVector {
+        throw new Error(
+            'Cannot perform cross on a Vector 2D, wrong dimensionality (2 when it should be at least 3)'
+        );
+    }
+
+    public neg() {
+        return this._vec.neg();
+    }
+
+    public mag(): number {
+        return this.mag();
+    }
     public toString() {
         const [l, r] = this._vec.value();
         return `Vector2D( ${l}, ${r} )`;

@@ -34,16 +34,16 @@ export class Vector3D implements IVector {
             .map((vec) => new Vector3D(vec.value() as Triple<number>));
     }
 
-    public normalise() {
-        return this._vec.normalise();
+    public normalise(): Vector3D {
+        return new Vector3D(this._vec.normalise().value() as Triple<number>);
     }
 
-    public cross(right: Vector3D): IVector {
-        return this._vec.cross(right);
+    public cross(right: Vector3D): Vector3D {
+        return new Vector3D(this._vec.cross(right).value() as Triple<number>);
     }
 
-    public neg() {
-        return this._vec.neg();
+    public neg(): Vector3D {
+        return new Vector3D(this._vec.neg().value() as Triple<number>);
     }
 
     public mag(): number {

@@ -33,4 +33,20 @@ export class Vector3D implements IVector {
             .sub(right)
             .map((vec) => new Vector3D(vec.value() as Triple<number>));
     }
+
+    public normalise() {
+        return this._vec.normalise();
+    }
+
+    public cross(right: Vector3D): IVector {
+        return this._vec.cross(right);
+    }
+
+    public neg() {
+        return this._vec.neg();
+    }
+
+    public mag(): number {
+        return this.mag();
+    }
 }

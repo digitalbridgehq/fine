@@ -16,4 +16,6 @@ export interface IVector extends IValue<Array<number>> {
     sum(right: IVector): FineResult<string, IVector>;
     sub(right: IVector): FineResult<string, IVector>;
     neg(): IVector;
+    normalise(): IVector;
+    mag(): number;
 }

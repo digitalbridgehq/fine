@@ -17,16 +17,16 @@ export class Position3D implements IPosition3D {
         if (matrix.rows() === 1 && matrix.columns() === 3) {
             return matrix
                 .row(0)
-                .map(pos => pos.value())
+                .map((pos) => pos.value())
                 .map(([x, y, z]) => new Position3D(x, y, z));
         } else if (matrix.columns() === 1 && matrix.rows() === 3) {
             return matrix
                 .column(0)
-                .map(pos => pos.value())
+                .map((pos) => pos.value())
                 .map(([x, y, z]) => new Position3D(x, y, z));
         } else {
             return left(
-                '[Pos3D]: Validation Error - unable to construct Pos3D from Matrix',
+                '[Pos3D]: Validation Error - unable to construct Pos3D from Matrix'
             );
         }
     }
@@ -62,6 +62,13 @@ export class Position3D implements IPosition3D {
     public translate(vector: Vector3D) {
         const [x, y, z] = vector.value();
         return new Position3D(this.x() + x, this.y() + y, this.z() + z);
+    }
+
+    public subtract(right: IPosition3D): Vector3D {
+        const [x, y, z] = this.value();
+        const [x1, y1, z1] = right.value();
+
+        return new Vector3D([x - x1, y - y1, z - z1]);
     }
 
     public equal(right: IPosition3D) {

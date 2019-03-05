@@ -1,6 +1,7 @@
 import { Position3D as Pos3D } from './Position3D';
+import { Vector3D } from '../Vector';
 
-describe('Pos3D', () => {
+describe('Position3D', () => {
     it('represents a position in 3D', () => {
         const pos = new Pos3D(2, 4, 8);
 
@@ -40,4 +41,16 @@ describe('Pos3D', () => {
             expect(actual).toEqual(expected);
         });
     });
+
+    describe('subtract', () => {
+        it('returns a Vector representing the difference between the two points', () => {
+            const left = new Pos3D(8, 8, 8);
+            const right = new Pos3D(1, 1, 1);
+
+            const expected = new Vector3D([7, 7, 7]);
+            const actual = left.subtract(right);
+
+            expect(actual).toEqual(expected);
+        });
+    })
 });

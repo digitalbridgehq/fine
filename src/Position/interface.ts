@@ -3,6 +3,7 @@ import { IOrdinal } from '../Ordinal';
 import { ITranslatable } from '../Translatable';
 import { Pair } from '../util/Pair';
 import { Triple } from '../util/Triple';
+import { IVector, Vector2D, Vector3D } from 'Vector';
 
 export interface IPosition extends IOrdinal {
   /**
@@ -13,6 +14,10 @@ export interface IPosition extends IOrdinal {
    * construct a new Position from the miminum elements of each component
    */
   minimum(right: IPosition): IPosition;
+  /**
+   * Find the difference between two positions expressed as a  vector
+   */
+  subtract(right: IPosition): IVector;
 }
 
 export interface IPosition2D
@@ -23,6 +28,7 @@ export interface IPosition2D
   y(): number;
   maximum(right: IPosition2D): IPosition2D;
   minimum(right: IPosition2D): IPosition2D;
+  subtract(right: IPosition2D): Vector2D;
 }
 
 export interface IPosition3D
@@ -40,4 +46,5 @@ export interface IPosition3D
    * construct a new Position3D from the miminum elements of each component
    */
   minimum(right: IPosition3D): IPosition3D;
+  subtract(right: IPosition3D): Vector3D;
 }

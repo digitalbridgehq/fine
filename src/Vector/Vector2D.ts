@@ -40,7 +40,7 @@ export class Vector2D implements IVector {
         return new Vector2D(this._vec.neg().value());
     }
     public mag(): number {
-        return this.mag();
+        return this._vec.mag();
     }
     public toString() {
         const [l, r] = this._vec.value();

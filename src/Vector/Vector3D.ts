@@ -47,6 +47,6 @@ export class Vector3D implements IVector {
     }
 
     public mag(): number {
-        return this.mag();
+        return this._vec.mag();
     }
 }

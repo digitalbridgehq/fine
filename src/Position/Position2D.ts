@@ -38,6 +38,12 @@ export class Position2D implements IPosition2D {
         const [x, y] = vector.value();
         return new Position2D(this.x() + x, this.y() + y);
     }
+    public subtract(right: IPosition2D): Vector2D {
+        const [x, y ] = this.value();
+        const [x1, y1] = right.value();
+
+        return new Vector2D([x - x1, y - y1]);
+    }
     public equal(right: IPosition2D) {
         return this.x() === right.x() && this.y() === right.y();
     }

@@ -3,7 +3,7 @@ import { IOrdinal } from '../Ordinal';
 import { ITranslatable } from '../Translatable';
 import { Pair } from '../util/Pair';
 import { Triple } from '../util/Triple';
-import { IVector, Vector2D, Vector3D } from 'Vector';
+import { IVector, Vector2D, Vector3D } from '../Vector';
 
 export interface IPosition extends IOrdinal {
   /**
